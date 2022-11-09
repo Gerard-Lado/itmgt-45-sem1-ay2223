@@ -37,17 +37,77 @@ def shift_letter(letter, shift):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    new_ord = ord(letter) + shift;
     
-    if ord(letter) == 32:
-        return " ";
+    if shift > 26:
+        shift = shift % 26;
     else:
         pass
     
-    if new_ord <= 90 and new_ord >= 65:
-        return chr(new_ord);
+    alphabet_dictionary = {
+        0: "A", 
+        1: "B", 
+        2: "C", 
+        3: "D", 
+        4: "E", 
+        5: "F", 
+        6: "G", 
+        7: "H", 
+        8: "I", 
+        9: "J", 
+        10: "K", 
+        11: "L", 
+        12: "M", 
+        13: "N", 
+        14: "O", 
+        15: "P", 
+        16: "Q", 
+        17: "R", 
+        18: "S", 
+        19: "T", 
+        20: "U", 
+        21: "V", 
+        22: "W", 
+        23: "X", 
+        24: "Y", 
+        25: "Z"}
+
+    inverse_dictionary = {
+        "A": 0,
+        "B": 1,
+        "C": 2,
+        "D": 3,
+        "E": 4,
+        "F": 5,
+        "G": 6,
+        "H": 7,
+        "I": 8,
+        "J": 9,
+        "K": 10,
+        "L": 11,
+        "M": 12,
+        "N": 13,
+        "O": 14,
+        "P": 15,
+        "Q": 16,
+        "R": 17,
+        "S": 18,
+        "T": 19,
+        "U": 20,
+        "V": 21,
+        "W": 22,
+        "X": 23,
+        "Y": 24,
+        "Z": 25}
+    
+    letter_number = inverse_dictionary[letter];
+    newletter_number = letter_number + shift;
+    
+    if newletter_number > 25:
+        newletter_number = newletter_number - 26;
     else:
-        return chr(64+(new_ord-90));
+        pass
+    
+    return alphabet_dictionary[newletter_number]
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher. 
@@ -70,6 +130,10 @@ def caesar_cipher(message, shift):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     message_list = [];
+    if shift > 26:
+        shift = shift % 26;
+    else:
+        pass
     alphabet_dictionary = {
         0: "A", 
         1: "B", 
@@ -214,11 +278,10 @@ def vigenere_cipher(message, key):
     str
         the message, shifted appropriately.
     '''
-    
-    encrypted_message = "" 
     message_list = [];
-    key_list = [];
-    key_full = "";
+    extended_key = "";
+    final_message = "";
+    
     alphabet_dictionary2 = {
                 0: "A", 
                 1: "B", 
@@ -274,38 +337,32 @@ def vigenere_cipher(message, key):
         "X": 23,
         "Y": 24,
         "Z": 25}
-
-    for g in message:
-        message_list.append(g);
-    
-    if len(message_list) % len(key) == 0:
-        while len(key_full) < len(message_list):
-            key_full = key_full + key;
-        for h in key_full:
-            key_list.append(h);
-    
-    elif len(message_list) % len(key) != 0:
-        key_fragment = key[0: len(message) % len(key)]
-        for i in range(len(message) // len(key)):
-            key_full = key_full + key;
-        key_full = key_full + key_fragment;
-        for j in key_full:
-            key_list.append(j)
-    
-    print(key_full);
-    for k in range(len(key_list)):
-        key_list[k] = inverse_dictionary2[key_list[k]];
-     
-    for l in range(len(message)):
-        if message_list[l] == " ":
-            pass
+    for i in message:
+        if i != " ":
+            message_list.append(i);
         else:
-            if inverse_dictionary2[message_list[l]] + key_list[l] <= 25:
-                message_list[l] = alphabet_dictionary2[inverse_dictionary2[message_list[l]] + key_list[l]]
-            else:
-                message_list[l] = alphabet_dictionary2[((inverse_dictionary2[message_list[l]] + key_list[l]) - 26)]
-                                               
-    for m in range(len(message_list)):
-        encrypted_message = encrypted_message + message_list[m]
+            pass
+    keyfragment = len(message_list) % len(key)
+    fullkeyreps = (len(message_list) - keyfragment) / len(key)
     
-    return encrypted_message
+    for j in range(int(fullkeyreps)):
+        extended_key = extended_key + key;
+    
+    for k in range(int(keyfragment)):
+        extended_key = extended_key + key[k];
+        
+    for m in range(len(extended_key)):
+        shift = inverse_dictionary2[extended_key[m]];
+        letter_number = inverse_dictionary2[message_list[m]];
+        newletter_number = letter_number + shift;
+        if newletter_number > 25:
+            newletter_number = newletter_number - 26;
+        else:
+            pass
+        message_list[m] = alphabet_dictionary2[newletter_number];
+        
+    for n in range(len(message_list)):
+        final_message = final_message + message_list[n];
+        
+    return final_message
+    

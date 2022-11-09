@@ -44,13 +44,13 @@ def savings(gross_pay, tax_rate, expenses):
     aftertax_pay = gross_pay - (gross_pay*tax_rate);
     
     if round(aftertax_pay) < aftertax_pay:
-        aftertax_pay = int(round(aftertax_pay)) * 100;
+        aftertax_pay = int(round(aftertax_pay));
     elif round(aftertax_pay) > aftertax_pay:
-        aftertax_pay = int(round(aftertax_pay - 1)) * 100;
+        aftertax_pay = int(round(aftertax_pay - 1));
     else:
-        aftertax_pay = aftertax_pay * 100;
+        aftertax_pay = aftertax_pay;
     
-    pay_remainder = aftertax_pay - (expenses/100);
+    pay_remainder = aftertax_pay - expenses;
     
     return int(pay_remainder)
 
@@ -169,9 +169,10 @@ def body_mass_index(weight, height):
     else:
         pass
     
-    metric_weight = weight * 0.453592;
+    metric_weight = weight * 0.45;
     metric_height = (((height[0]*12) + height[1]) * 2.54) / 100;
     
     BMI = metric_weight / (metric_height*metric_height);
     
     return BMI;
+

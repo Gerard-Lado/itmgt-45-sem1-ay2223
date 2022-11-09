@@ -34,13 +34,13 @@ def relationship_status(from_member, to_member, social_graph):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     if to_member in social_graph[from_member]["following"] and from_member in social_graph[to_member]["following"]:
-        return "Friends"
+        return "friends"
     elif to_member not in social_graph[from_member]["following"] and from_member in social_graph[to_member]["following"]:
-        return "Followed by"
+        return "followed by"
     elif to_member in social_graph[from_member]["following"] and from_member not in social_graph[to_member]["following"]:
-        return "Follower"
+        return "follower"
     else:
-        return "None"
+        return "no relationship"
 
 def tic_tac_toe(board):
     '''Tic Tac Toe. 
@@ -65,39 +65,85 @@ def tic_tac_toe(board):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     horizontal_lists = []
     vertical_lists = []
+    
+    rdiagonal_lists1 = []
+    rdiagonal_lists2 = []
     rdiagonal_lists = []
+    
+    ldiagonal_lists1 = []
+    ldiagonal_lists2 = []
     ldiagonal_lists = []
+    
     combination_list = []
-    width = len(board)
-    starting_element_limit = width - 2
+    width = len(board) - 1
+    stopper = width - 3
+    
     #Horizontal Combinations
     for a in range(len(board)):
-        for b in range(len(board[a][0:starting_element_limit])):
-            horizontal_lists.append([board[a][b], board[a][b+1], board[a][b+2]])
+        horizontal_lists.append(board[a])
+
     #Vertical Combinations
-    for c in range(len(board[0:starting_element_limit])):
-        for d in range(len(board[c])):
-            vertical_lists.append([board[c][d], board[c+1][d], board[b+2][d]])
+    for b in range(len(board)):
+        vertical_lists.append([])
+        for c in range(len(board)):
+            vertical_lists[b].append(board[c][b])
+
     #Left-Leaning Diagonals
-    for e in range(len(board[0:starting_element_limit])):
-        for f in range(len(board[e][0:starting_element_limit])):
-            ldiagonal_lists.append([board[e][f], board[e+1][f+1], board[e+2][f+2]])
-    #Right-Leaning Diagonals
-    for g in range(len(board[0:starting_element_limit])):
-        for h in range(len(board[g][2:])):
-            rdiagonal_lists.append([board[e][f], board[e+1][f-1], board[e+2][f-2]])
-    combination_list = horizontal_lists + vertical_lists + rdiagonal_lists + ldiagonal_lists
+    for d in range(len(board)):
+        ldiagonal_lists1.append([])
+    for d in range(len(board)):
+        ldiagonal_lists2.append([])
+     
+    for g in range(len(ldiagonal_lists1)):
+        for e in range(len(board)):
+            for f in range(len(board)):
+                if e+g==f:
+                    ldiagonal_lists1[g].append(board[f][e])
+                    
+    for g in range(len(ldiagonal_lists2)):
+        for e in range(len(board)):
+            for f in range(len(board)):
+                if e==f+g:
+                    ldiagonal_lists2[g].append(board[f][e])
     
-    for i in combination_list:
-        if i == ["X", "X", "X"]:
+    ldiagonal_lists = ldiagonal_lists1 + ldiagonal_lists2
+
+    #Right-Leaning Diagonals (L-R)
+    for d in range(len(board)):
+        rdiagonal_lists1.append([])
+    for d in range(len(board)):
+        rdiagonal_lists2.append([])
+     
+    for g in range(len(rdiagonal_lists1)):
+        for e in range(len(board)):
+            for f in range(len(board)):
+                if e-g==f:
+                    rdiagonal_lists1[g].append(board[width-e][f])
+                    
+    for g in range(len(rdiagonal_lists2)):
+        for e in range(len(board)):
+            for f in range(len(board)):
+                if e==f-g:
+                    rdiagonal_lists2[g].append(board[width-e][f])
+    
+    rdiagonal_lists = rdiagonal_lists1 + rdiagonal_lists2
+
+    combination_list = horizontal_lists + vertical_lists + ldiagonal_lists + rdiagonal_lists
+
+    for k in range(len(combination_list)):
+        teststring = ""
+        for l in range(len(combination_list[k])):
+            teststring = teststring + combination_list[k][l]
+        if "XXX" in teststring:
             return "X"
             break
-        elif i == ["O", "O", "O"]:
+        elif "OOO" in teststring:
             return "O"
             break
         else:
             pass
-    return "None"
+    
+    return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
@@ -126,17 +172,29 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     travel_time = 0
-    for k, v in route_map.items():
-        if k[0] == first_stop:
-            travel_time = travel_time + v["travel_time_mins"]
-            if k[1] == second_stop:
-                break
+    next_stop = ""
+    looper = 0
+    
+    if first_stop == second_stop:
+        return 0
+    
+    while looper != 1:
+        for k, v in legs.items():
+            if k[0] == first_stop and k[1] != second_stop:
+                travel_time = travel_time + v['travel_time_mins']
+                looper = 0
+                next_stop = k[1]   
+            elif k[0] == first_stop and k[1] == second_stop:
+                travel_time = travel_time + v['travel_time_mins']
+                looper = 0
+                return travel_time
+            elif k[0] == next_stop and k[1] != second_stop:
+                travel_time = travel_time + v['travel_time_mins']
+                looper = 0
+                next_stop = k[1]
+            elif k[0] == next_stop and k[1] == second_stop:
+                travel_time = travel_time + v['travel_time_mins']
+                looper = 0
+                return travel_time
             else:
-                for l, m in route_map.items():
-                    if l[1] == second_stop:
-                        travel_time = travel_time + m["travel_time_mins"]
-                        break
-                    else:
-                        travel_time = travel_time + m["travel_time_mins"]
-                        
-    return travel_time
+                looper = 1
