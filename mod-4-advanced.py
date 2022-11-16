@@ -3,6 +3,7 @@ Parsing Data
 This assignment covers your ability to manipulate data in Python.
 '''
 
+
 def relationship_status(from_member, to_member, social_graph):
     '''Relationship Status.
     15 points.
@@ -80,13 +81,24 @@ def tic_tac_toe(board):
     
     #Horizontal Combinations
     for a in range(len(board)):
-        horizontal_lists.append(board[a])
+        horizontal_lists.append([])
+        for r in range(len(board[a])):
+            if board[a][r] == "X" or board[a][r] == "O":
+                horizontal_lists[a].append(board[a][r])
+            else:
+                horizontal_lists[a].append(" ")
+    
 
     #Vertical Combinations
     for b in range(len(board)):
         vertical_lists.append([])
         for c in range(len(board)):
-            vertical_lists[b].append(board[c][b])
+            if board[c][b] == "X" or board[c][b] == "O":
+                vertical_lists[b].append(board[c][b])
+            else:
+                vertical_lists[b].append(" ")
+            
+
 
     #Left-Leaning Diagonals
     for d in range(len(board)):
@@ -98,15 +110,27 @@ def tic_tac_toe(board):
         for e in range(len(board)):
             for f in range(len(board)):
                 if e+g==f:
-                    ldiagonal_lists1[g].append(board[f][e])
+                    if board[f][e] == "X" or board[f][e] == "O":
+                        ldiagonal_lists1[g].append(board[f][e])
+                    else:
+                        ldiagonal_lists1[g].append(" ")
+                else:
+                    pass
                     
     for g in range(len(ldiagonal_lists2)):
         for e in range(len(board)):
             for f in range(len(board)):
                 if e==f+g:
-                    ldiagonal_lists2[g].append(board[f][e])
+                    if board[f][e] == "X" or board[f][e] == "O":
+                        ldiagonal_lists2[g].append(board[f][e])
+                    else:
+                        ldiagonal_lists2[g].append(" ")
+                else:
+                    pass
     
     ldiagonal_lists = ldiagonal_lists1 + ldiagonal_lists2
+    
+
 
     #Right-Leaning Diagonals (L-R)
     for d in range(len(board)):
@@ -118,30 +142,41 @@ def tic_tac_toe(board):
         for e in range(len(board)):
             for f in range(len(board)):
                 if e-g==f:
-                    rdiagonal_lists1[g].append(board[width-e][f])
+                    if board[width-e][f] == "X" or board[width-e][f] == "O":
+                        rdiagonal_lists1[g].append(board[width-e][f])
+                    else:
+                        rdiagonal_lists1[g].append(" ")
+                else:
+                    pass
                     
     for g in range(len(rdiagonal_lists2)):
         for e in range(len(board)):
             for f in range(len(board)):
                 if e==f-g:
-                    rdiagonal_lists2[g].append(board[width-e][f])
+                    if board[width-e][f] == "X" or board[width-e][f] == "O":
+                        rdiagonal_lists2[g].append(board[width-e][f])
+                    else:
+                        rdiagonal_lists2[g].append(" ")
+                else:
+                    pass
     
     rdiagonal_lists = rdiagonal_lists1 + rdiagonal_lists2
 
     combination_list = horizontal_lists + vertical_lists + ldiagonal_lists + rdiagonal_lists
 
-    for k in range(len(combination_list)):
+    print(combination_list)
+    
+    for h in range(len(combination_list)):
         teststring = ""
-        for l in range(len(combination_list[k])):
-            teststring = teststring + combination_list[k][l]
-        if "XXX" in teststring:
-            return "X"
-            break
-        elif "OOO" in teststring:
-            return "O"
-            break
-        else:
-            pass
+        for i in range(len(combination_list[h])):
+            teststring = teststring + combination_list[h][i]
+            if "XXX" in teststring:
+                return "X"
+            elif "OOO" in teststring:
+                return "O"
+            else:
+                pass
+        
     
     return "NO WINNER"
 
@@ -179,7 +214,7 @@ def eta(first_stop, second_stop, route_map):
         return 0
     
     while looper != 1:
-        for k, v in legs.items():
+        for k, v in route_map.items():
             if k[0] == first_stop and k[1] != second_stop:
                 travel_time = travel_time + v['travel_time_mins']
                 looper = 0

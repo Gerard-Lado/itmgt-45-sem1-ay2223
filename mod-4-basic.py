@@ -126,13 +126,12 @@ def interest(principal, rate, periods):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    for i in range(periods):
-        principal = principal + (principal*rate);
+    final_value = (principal * rate * periods) + principal
     
-    if round(principal) <= principal:
-        return round(principal);
-    elif round(principal) > principal:
-        return round(principal) - 1;
+    if round(final_value) <= final_value:
+        return round(final_value);
+    elif round(final_value) > final_value:
+        return round(final_value) - 1;
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -175,4 +174,3 @@ def body_mass_index(weight, height):
     BMI = metric_weight / (metric_height*metric_height);
     
     return BMI;
-

@@ -99,6 +99,12 @@ def shift_letter(letter, shift):
         "Y": 24,
         "Z": 25}
     
+    if letter == " ":
+        return " "
+    else:
+        pass
+    
+    
     letter_number = inverse_dictionary[letter];
     newletter_number = letter_number + shift;
     
@@ -279,7 +285,7 @@ def vigenere_cipher(message, key):
         the message, shifted appropriately.
     '''
     message_list = [];
-    extended_key = "";
+    key_list = [];
     final_message = "";
     
     alphabet_dictionary2 = {
@@ -338,28 +344,39 @@ def vigenere_cipher(message, key):
         "Y": 24,
         "Z": 25}
     for i in message:
-        if i != " ":
-            message_list.append(i);
-        else:
-            pass
-    keyfragment = len(message_list) % len(key)
-    fullkeyreps = (len(message_list) - keyfragment) / len(key)
+        message_list.append(i);
     
-    for j in range(int(fullkeyreps)):
-        extended_key = extended_key + key;
-    
-    for k in range(int(keyfragment)):
-        extended_key = extended_key + key[k];
-        
-    for m in range(len(extended_key)):
-        shift = inverse_dictionary2[extended_key[m]];
-        letter_number = inverse_dictionary2[message_list[m]];
-        newletter_number = letter_number + shift;
-        if newletter_number > 25:
-            newletter_number = newletter_number - 26;
+    j = 0;
+    k = 0;
+    while len(key_list) < len(message_list):
+        if message_list[k] == " ":
+            key_list.append(" ")
+            k = k+1
+            if j == len(key):
+                j = 0
+            else:
+                pass
         else:
+            key_list.append(key[j]);
+            j = j+1;
+            k = k+1
+            if j == len(key):
+                j = 0
+            else:
+                pass
+    
+    for m in range(len(key_list)):
+        if message_list[m] == " ":
             pass
-        message_list[m] = alphabet_dictionary2[newletter_number];
+        else:
+            shift = inverse_dictionary2[key_list[m]];
+            letter_number = inverse_dictionary2[message_list[m]];
+            newletter_number = letter_number + shift;
+            if newletter_number > 25:
+                newletter_number = newletter_number - 26;
+            else:
+                pass
+            message_list[m] = alphabet_dictionary2[newletter_number];
         
     for n in range(len(message_list)):
         final_message = final_message + message_list[n];
