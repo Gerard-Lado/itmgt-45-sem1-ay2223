@@ -1,0 +1,62 @@
+Number,Name,lat,lng,type,status
+1,Regis Front Parking,14.640934,121.074406,Establishment,vacant
+2,Regis Basement Parking,14.640839,121.074194,Establishment,vacant
+3,Shakey's Katipunan Parking,14.636389,121.073889,Restaurant,vacant
+4,McDonald's Katipunan Parking,14.635833,121.073889,Restaurant,taken
+5,Pop Up Katipunan Parking,14.63334968,121.0736428,Establishment,taken
+6,SM Blue Front Parking,14.63273929,121.0745499,Establishment,taken
+7,Techtite Parking,14.640502,121.073925,Establishment,taken
+8,"22 F Dela Rosa QC Parking (across ""MyPlace"")",14.640366,121.07357,Establishment,taken
+9,Tyler's Cafe Parking,14.639553,121.074315,Restaurant,taken
+10,Gino's Brick Oven Pizza Parking,14.639604,121.074325,Restaurant,taken
+11,Jollibee Front Parking,14.63727745,121.0742613,Restaurant,taken
+12,Jollibee Back Parking,14.63740331,121.0738535,Restaurant,taken
+13,Kenny Rogers Parking,14.63757449,121.0739007,Restaurant,taken
+14,Prince David Front Parking,14.63770737,121.074208,Establishment,taken
+15,One Burgundy Plaza Front Parking,14.6379417,121.0741222,Establishment,taken
+16,Vista Residences Front Parking,14.63828149,121.0742666,Establishment,taken
+17,Starbucks Parking,14.63680269,121.0741589,Restaurant,taken
+18,National Bookstore Parking,14.63690645,121.0741638,Supplies,taken
+19,Army Navy Parking,14.63703824,121.0741465,Restaurant,taken
+20,BDO Parking,14.6371765,121.0740662,Bank,taken
+21,Torre Lorenzo Parking,14.63658469,121.0741375,Establishment,taken
+22,Cello's Doughnuts Parking,14.63887849,121.0742756,Restaurant,taken
+23,FBR Arcade Parking,14.63911518,121.0742503,Establishment,taken
+24,Yellow Cab Parking,14.63930781,121.0742928,Restaurant,taken
+25,Oracle Basement Parking,14.63924956,121.0742696,Establishment,taken
+26,PSBank Parking,14.63868505,121.0742472,Bank,taken
+27,KFC Parking,14.64038459,121.0743351,Restaurant,taken
+28,Mercury Drug Parking,14.64020956,121.0743283,Pharmacy,taken
+29,Sweet Inspirations Parking,14.63883057,121.0742714,Restaurant,taken
+30,Crowne One Parking Space,14.639986,121.073308,Establishment,taken
+31,Loyola Heights Condominum Front Parking,14.640553,121.073335,Establishment,taken
+32,Casa Boronesa Front Parking,14.641312,121.073431,Establishment,taken
+33,SMRC Building 1 Front Parking,14.64254354,121.0744234,Establishment,taken
+34,Petron Katipunan Front Parking,14.64660535,121.0748654,Gas Station,taken
+35,Petron Katipunan Basement Parking,14.64667217,121.0748292,Gas Station,taken
+36,Santa Maria della Strada Parish,14.64744312,121.0748729,Church,taken
+37,UP Town Center Parking (Landers Entrance),14.64947136,121.0759968,Shopping Mall,taken
+38,UP Town Center Parking (Mango Entrance),14.65286651,121.0750604,Shopping Mall,taken
+39,Chinabank Parking,14.64690471,121.0740176,Bank,taken
+40,Eastwest Bank Parking,14.64667356,121.0741196,Bank,taken
+41,#333 Golan Bldng (Robinson's Marketplace) Front Parking,14.64284603,121.0743508,Establishment,taken
+42,Dormitoryana Front Parking,14.64238276,121.0741814,Student Dormitory,taken
+43,Agor Building Front Parking ,14.643107,121.074467,Establishment,taken
+44,MR.Quickie Front Parking,14.643266,121.074482,Establishment,taken
+45,Studio 337 Salon & Spa Front Parking,14.643449,121.074494,Spa,taken
+46,Metrobank Front Parking,14.643704,121.074455,Bank,taken
+47,Metrobank Side Parking,14.643556,121.074366,Bank,taken
+48,Savemore Market Front Parking,14.644548,121.07439,Grocery Store,taken
+49,BDO Berkely Front Parking,14.644796,121.07437,Bank,taken
+50,BPI Front Parking,14.645176,121.074231,Bank,taken
+51,Shell Back Parking,14.646,121.073903,Gas Station,taken
+52,Elizabeth Hall Front Parking,14.646614,121.074101,Dormitory,taken
+53,Bellagio Residences Front parking,14.634244,121.074121,Condominium,taken
+54,Rubicon Hardware Front Parking,14.633954,121.07385,Establishment,taken
+55,Alcal Building Front Parking,14.635166,121.074094,Establishment,taken
+56,One Avisha Residences,14.636259,121.073483,Establishment,taken
+57,MQI Center Front Parking,14.6361915,121.0731899,Establishment,taken
+58,AAP Building Front Parking,14.639069,121.073288,Establishment,taken
+59,Got Heart Shop Front Parking,14.639063,121.073184,Establishment,taken
+60,test,14.63907,121.0733,test,vacant
+61,test,14.63905,121.0732,test,vacant
