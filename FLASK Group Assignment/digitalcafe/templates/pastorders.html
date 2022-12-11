@@ -1,0 +1,14 @@
+{% include "header.html" %}
+        <h1>Past Orders</h1>
+            {% if order_list is defined %}
+            <table>
+            <tr><th>Name</th><th>Quantity</th><th>Subtotal</th></tr>
+            {% for order in order_list %}
+            <tr><td>{{ order["name"] }}</td><td>{{ order["qty"] }}</td><td>{{ order["subtotal"] }}</td></tr>
+            {% endfor %}
+            </table>
+            {% else %}
+            <div>Your cart is empty</div>
+            {% endif %}
+
+{% include "footer.html" %}
